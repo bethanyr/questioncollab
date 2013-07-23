@@ -14,6 +14,4 @@ feature "editing questions" do
     page.should_not have_content('What is 2+2?')
 
   end
-
-
 end

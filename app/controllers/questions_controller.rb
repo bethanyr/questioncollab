@@ -1,5 +1,7 @@
 class QuestionsController < ApplicationController
+#before_filter :authenticate_user!, :only => [:index, :show]
 before_filter :find_question, :only => [:show, :edit, :update, :destroy]
+
   def index
     @questions = Question.all
 
@@ -14,11 +16,15 @@ before_filter :find_question, :only => [:show, :edit, :update, :destroy]
   end
 
   def create
-    @question = Question.new(params[ :question])
 
 
 
-    if @question.save
+
+
+
+    if @question = current_user.questions.create(params[ :question])
+       #@question.users.create(params[ :user])
+
       flash[ :notice] = "Question has been created."
       redirect_to @question
     else
@@ -37,13 +43,10 @@ before_filter :find_question, :only => [:show, :edit, :update, :destroy]
   end
 
   def update
-    if @question.update_attributes(params[:question])
-      flash[:notice] = "Question has been updated."
-      redirect_to [@question]
-    else
-      flash[:alert] = "Question has not been updated."
-      render :action => "edit"
-    end
+    @question.update_attributes(params[:question])
+    @question.users << current_user
+    flash[:notice] = "Question has been updated."
+    redirect_to [@question]
   end
   private
     def find_question
