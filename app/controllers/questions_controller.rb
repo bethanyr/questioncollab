@@ -2,6 +2,7 @@ class QuestionsController < ApplicationController
 before_filter :find_question, :only => [:show, :edit, :update, :destroy]
   def index
     @questions = Question.all
+
   end
 
   def show
@@ -14,6 +15,9 @@ before_filter :find_question, :only => [:show, :edit, :update, :destroy]
 
   def create
     @question = Question.new(params[ :question])
+
+
+
     if @question.save
       flash[ :notice] = "Question has been created."
       redirect_to @question
