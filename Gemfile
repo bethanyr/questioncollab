@@ -7,7 +7,20 @@ gem 'rails', '3.2.13'
 
 gem 'sqlite3'
 
+gem 'devise'
 
+#simplecov --> installed as part of class (not in book)
+gem 'simplecov', :require => false, :group => :test
+
+group :test, :development do
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'factory_girl'
+  gem 'email_spec', '1.2.1'
+end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
