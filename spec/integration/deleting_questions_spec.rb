@@ -2,6 +2,7 @@ require 'spec_helper'
 feature "Delete questions" do
   scenario "User can delete questions" do
     question= FactoryGirl.create(:question, :title => "What is 2+2?")
+    sign_in_as!(FactoryGirl.create(:confirmed_user))
     visit ('/')
     click_link 'What is 2+2?'
     click_link 'Delete Question'

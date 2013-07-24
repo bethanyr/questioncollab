@@ -1,0 +1,10 @@
+<h3>Edited Questions by <%= @user.email %></h3>
+<ul>
+  <% @user.questions.each do |q| %>
+    <li>
+      #<%= q.id %> -
+      <%= link_to q.title, q %>
+    </li>
+   <% end %>
+</ul>
+<%= link_to "Back to Questions", root_path %>

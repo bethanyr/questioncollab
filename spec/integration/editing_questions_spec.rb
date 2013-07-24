@@ -3,6 +3,7 @@ require 'spec_helper'
 feature "editing questions" do
   scenario "user can edit a question" do
     question= FactoryGirl.create(:question, :title => "What is 2+2?")
+    sign_in_as!(FactoryGirl.create(:confirmed_user))
     visit ('/')
     click_link 'What is 2+2?'
     click_link 'Edit Question'
