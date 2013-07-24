@@ -5,7 +5,7 @@ feature "Viewing questions" do
 
     user = FactoryGirl.create(:user)
     user.confirm!
-    #sign_in_as!(user)
+    sign_in_as!(user)
     question = FactoryGirl.create(:question, :title => "What is 2+2?")
     visit ('/')
     page.should have_content("What is 2+2?")
@@ -13,8 +13,9 @@ feature "Viewing questions" do
   end
   scenario "User can view the details of a question" do
     question = FactoryGirl.create(:question, :title => "What is 2+2?")
-    user = FactoryGirl.create(:confirmed_user)
-    sign_in_as!(user)
+    sign_in_as!(FactoryGirl.create(:confirmed_user))
+    #user = FactoryGirl.create(:confirmed_user)
+    #sign_in_as!(user)
     visit ('/')
     click_link question.title
     page.current_url.should == question_url(question)
