@@ -7,7 +7,9 @@ feature "User sign up" do
     fill_in "Password", :with => "password"
     fill_in "Password confirmation", :with => "password"
     click_button "Sign up"
-    message = "You have signed up successfully."
+    #message = "You have signed up successfully."
+    #page.should have_content(message)
+    message = "Please open the link to activate your account."
     page.should have_content(message)
   end
 end
