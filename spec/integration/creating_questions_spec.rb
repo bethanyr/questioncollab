@@ -3,6 +3,7 @@ require 'spec_helper'
 feature "creating questions" do
   scenario "can create questions" do
     visit ('/')
+    sign_in_as!(FactoryGirl.create(:confirmed_user))
     click_link 'New Question'
     fill_in "Title", :with => 'What is 2+2?'
     fill_in "Answer", :with => '4'
