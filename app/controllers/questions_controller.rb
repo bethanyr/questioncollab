@@ -20,6 +20,7 @@ before_filter :find_question, :only => [:show, :edit, :update, :destroy]
     if @question.save
       #current_user.questions |= @question
       @question.users << current_user unless current_user.in?@question.users
+
     #if @question = current_user.questions.create(params[ :question])
        #@question.users.create(params[ :user])
 
