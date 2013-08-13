@@ -7,7 +7,7 @@ gem 'dynamic_form', '1.1.4'
 
 gem 'sqlite3'
 
-
+gem 'omniauth-twitter'
 
 #simplecov --> installed as part of class (not in book)
 gem 'simplecov', :require => false, :group => :test
